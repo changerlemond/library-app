@@ -8,7 +8,7 @@ import javax.persistence.Id
 import javax.persistence.ManyToOne
 
 @Entity
-class UserLoanHistory (
+class UserLoanHistory(
 
     @ManyToOne
     val user: User,
@@ -22,6 +22,9 @@ class UserLoanHistory (
     val id: Long? = null,
 
     ) {
+
+    val isReturn: Boolean
+        get() = this.status == UserLoanStatus.RETURNED
 
     fun doReturn() {
         this.status = UserLoanStatus.RETURNED

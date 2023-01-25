@@ -15,8 +15,8 @@ class CalculatorSpockTest extends Specification {
 
         where:
         number | addNumber | result
-        5      | 3         | 10
-        12     | 98        | 115
+        5      | 3         | 8
+        12     | 98        | 110
         1001   | 533       | 1534
 
     }

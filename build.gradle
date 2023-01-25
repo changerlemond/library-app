@@ -6,6 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.21'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21'
     id 'org.jetbrains.kotlin.kapt' version '1.6.21'
+    id 'groovy'
 }
 
 group = 'com.group'
@@ -27,6 +28,7 @@ dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.spockframework:spock-core:2.0-groovy-3.0')
 }
 
 tasks.named('test') {

@@ -21,4 +21,31 @@ class CalculatorSpockTest extends Specification {
 
     }
 
+    def divideExceptionTest() {
+
+        given:
+        Calculator calculator = new Calculator(10)
+
+        when:
+        calculator.divide(0)
+
+        then:
+        def exception = thrown(IllegalArgumentException.class)
+        exception.message == "0으로 나눌 수 없습니다"
+
+    }
+
+    def "mock으로 임의의 값 넣어주는 테스트"() {
+
+        given:
+        def calculator = GroovyMock(Calculator.class)
+
+        when:
+        calculator.getNumber() >> 5
+
+        then:
+        5 == calculator.getNumber()
+
+    }
+
 }

@@ -2,7 +2,7 @@ package com.group.libraryapp.calculator
 
 import spock.lang.Specification
 
-class CalculatorSpockTest extends Specification {
+class CalculatorSpokeTest extends Specification {
 
     def addTest() {
 

@@ -2,7 +2,7 @@ package com.group.libraryapp.calculator
 
 import spock.lang.Specification
 
-class CalculatorSpockTest extends Specification {
+class CalculatorSpokeTest extends Specification {
 
     def addTest() {
 
@@ -21,6 +21,19 @@ class CalculatorSpockTest extends Specification {
 
     }
 
+    def divideTest() {
+
+        given:
+        Calculator calculator = new Calculator(15)
+
+        when:
+        calculator.divide(3)
+
+        then:
+        5 == calculator.number
+
+    }
+
     def divideExceptionTest() {
 
         given:
@@ -35,16 +48,32 @@ class CalculatorSpockTest extends Specification {
 
     }
 
-    def "mock으로 임의의 값 넣어주는 테스트"() {
+    def minusTest() {
 
         given:
-        def calculator = GroovyMock(Calculator.class)
+        Calculator calculator = new Calculator(5)
 
         when:
-        calculator.getNumber() >> 5
+        calculator.minus(2)
 
         then:
-        5 == calculator.getNumber()
+        3 == calculator.number
+
+    }
+
+    def multiplyTest() {
+
+        given:
+        Calculator calculator = new Calculator(initNumber)
+
+        expect:
+        calculator.multiply(multiplyNumber)
+
+        where:
+        initNumber | multiplyNumber | result
+        5          | 5              | 25
+        15         | 3              | 45
+        12         | 3              | 36
 
     }
 

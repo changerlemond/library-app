@@ -31,6 +31,7 @@ class BookServiceSpockTest extends Specification {
     def "saveBookTest"() {
 
         given:
+        def id = null
         BookRequest bookRequest = new BookRequest("1234", BookType.COMPUTER)
 
         and:
@@ -40,7 +41,12 @@ class BookServiceSpockTest extends Specification {
         bookService.saveBook(bookRequest)
 
         then:
-        1 * bookRepository.save({ it.name == bookRequest.getName() }) >> { args -> args[0 as String] }
+        1 * bookRepository.save({
+            it.name == bookRequest.getName()
+            it.type == bookRequest.getType()
+            it.id == id
+        }
+        ) >> { args -> args[0] }
     }
 
 }
